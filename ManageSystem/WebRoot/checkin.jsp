@@ -37,14 +37,35 @@ try {
 	}
 	if(userDao.getUserBean().getId()==-1){
 		response.getWriter().write("{success:false,data:'用户名不存在！'}");
+		logBean.setUser(userDao.getUserBean().getId());
+		logBean.setIpAddress(ip);
+		logBean.setType(Log.TYPE_LOGIN);
+		logBean.setOperate(Log.OP_LOGIN);
+		logBean.setResult(Log.RESULT_FAILURE);
+		logBean.setDescriptio("游客尝试用"+login_name+"登录系统失败");
+		logDao.add(logBean);
 		return;
 	}
 	if(userDao.getUserBean().getId()==-2){
 		response.getWriter().write("{success:false,data:'登录密码错误！'}");
+		logBean.setUser(userDao.getUserBean().getId());
+		logBean.setIpAddress(ip);
+		logBean.setType(Log.TYPE_LOGIN);
+		logBean.setOperate(Log.OP_LOGIN);
+		logBean.setResult(Log.RESULT_FAILURE);
+		logBean.setDescriptio("用户"+login_name+"登录系统，密码错误");
+		logDao.add(logBean);
 		return;
 	}
 	if(userDao.getUserBean().getId()==-3){
 		response.getWriter().write("{success:false,data:'用户不可用，请联系管理员！'}");
+		logBean.setUser(userDao.getUserBean().getId());
+		logBean.setIpAddress(ip);
+		logBean.setType(Log.TYPE_LOGIN);
+		logBean.setOperate(Log.OP_LOGIN);
+		logBean.setResult(Log.RESULT_FAILURE);
+		logBean.setDescriptio("用户"+login_name+"登录系统，但用户不可用");
+		logDao.add(logBean);
 		return;
 	}
 	session.setAttribute("user_id",new Integer(userDao.getUserBean().getId()));
@@ -70,6 +91,6 @@ try {
 } catch (Exception ex) {
  	System.out.println("用户登录发生错误:\n"+ex);
  	logBean.setResult(Log.RESULT_FAILURE);
- 	
+ 	logDao.add(logBean);
  	response.getWriter().write("{success:false,data:'系统错误！'}");
 }%>
