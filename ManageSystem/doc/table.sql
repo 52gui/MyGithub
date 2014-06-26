@@ -26,7 +26,7 @@ insert into user (name, login_name, password, superadmin) values
 --系统日志表
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` smallint(6) NOT NULL DEFAULT '1',
   `user` int(11) NOT NULL DEFAULT '0',
   `operate` smallint(6) NOT NULL DEFAULT '0',
@@ -45,8 +45,7 @@ CREATE TABLE `log` (
   KEY `user` (`user`),
   KEY `operate` (`operate`),
   KEY `result` (`result`),
-  CONSTRAINT `log_ibfk_4` FOREIGN KEY (`result`) REFERENCES `ct_log_result` (`id`),
+  CONSTRAINT `log_ibfk_3` FOREIGN KEY (`result`) REFERENCES `ct_log_result` (`id`),
   CONSTRAINT `log_ibfk_1` FOREIGN KEY (`type`) REFERENCES `ct_log_type` (`id`),
-  CONSTRAINT `log_ibfk_2` FOREIGN KEY (`user`) REFERENCES `user` (`id`),
-  CONSTRAINT `log_ibfk_3` FOREIGN KEY (`operate`) REFERENCES `ct_log_operate` (`id`)
+  CONSTRAINT `log_ibfk_2` FOREIGN KEY (`operate`) REFERENCES `ct_log_operate` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
