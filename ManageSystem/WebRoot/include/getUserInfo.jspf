@@ -1,0 +1,59 @@
+<%@page pageEncoding="GBK"%>
+<%
+	//用户id
+	Integer user_id = (Integer) session.getAttribute("user_id");;
+	int u_id=0;
+	if(user_id!=null) {
+		u_id = user_id.intValue();
+ 	}
+ 	//用户名
+	String name = (String) session.getAttribute("login_name");
+ 	String user_name = "";
+ 	if(name==null||name.equals(""))
+ 		user_name = "游客";
+ 	else
+ 		user_name = name;
+ 	//用户ip
+	String user_ip = (String)session.getAttribute("user_ip");
+	if(user_ip==null) {
+		user_ip="未知";
+	}
+	//是否是管理员
+ 	Integer isSuperAdmin = (Integer)session.getAttribute("superadmin");
+	boolean is_sa = false;
+	if (isSuperAdmin!=null) {
+		if(isSuperAdmin.intValue()==1){
+			is_sa=true;
+		}
+	}
+	//模块权限
+	int module=0;
+	if(session.getAttribute("module_right")!=null){
+		module=((Integer)session.getAttribute("module_right")).intValue();
+	}
+	boolean module1=false,module2=false,module3=false,module4=false,module5=false,module6=false;
+	if((module&1)>0)module1=true;
+	if((module&2)>0)module2=true;
+	if((module&4)>0)module3=true;
+	if((module&8)>0)module4=true;
+	if((module&16)>0)module5=true;
+	if((module&32)>0)module6=true;
+	//模块权限
+	int authority=0;
+	if(session.getAttribute("authority")!=null){
+		authority=((Integer)session.getAttribute("authority")).intValue();
+	}
+	boolean isWrite1=false,isWrite2=false,isWrite3=false,isWrite4=false,isWrite5=false,isWrite6=false;
+	if((authority&1)>0)isWrite1=true;
+	if((authority&2)>0)isWrite2=true;
+	if((authority&4)>0)isWrite3=true;
+	if((authority&8)>0)isWrite4=true;
+	if((authority&16)>0)isWrite5=true;
+	if((authority&32)>0)isWrite6=true;
+	System.out.println(user_id);
+	System.out.println(user_name);
+	System.out.println(user_ip);
+	System.out.println(isSuperAdmin);
+	System.out.println(module);
+	System.out.println(authority);
+%>

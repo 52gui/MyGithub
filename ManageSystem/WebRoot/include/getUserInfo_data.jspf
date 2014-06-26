@@ -1,0 +1,62 @@
+<%@page pageEncoding="GBK"%>
+<%
+	Integer user_id = (Integer) session.getAttribute("user_id");
+	int u_id=0;
+	if(user_id!=null) {
+		u_id = user_id.intValue();
+ 	}else{
+ 		return;
+ 	}
+ 	Integer Org_id = (Integer) session.getAttribute("org_id");
+	int org_id=0;
+	if(Org_id!=null) {
+		org_id = Org_id.intValue();
+ 	}
+	String u_name = (String)session.getAttribute("user_name");
+	if(u_name==null) {
+		u_name="Î´¶¨Òå";
+	}
+	String user_ip = (String)session.getAttribute("user_ip");
+	if(user_ip==null) {
+		user_ip="Î´Öª";
+	}
+	Integer isSuperAdmin = (Integer)session.getAttribute("isSuperAdmin");
+	boolean is_sa = false;
+	if (isSuperAdmin!=null) {
+		if(isSuperAdmin.intValue()==1)
+		is_sa=true;
+		//is_sa = isSuperAdmin.booleanValue();
+	}
+	Integer adminOrg = (Integer)session.getAttribute("adminOrg");
+	int admin_org=0;
+	if(adminOrg!=null) {
+		admin_org = adminOrg.intValue();
+ 	}
+	boolean is_ao = false;
+	if((admin_org)>0)is_ao=true;
+	
+	int module=0;
+	if(session.getAttribute("module_right")!=null){
+		module=((Integer)session.getAttribute("module_right")).intValue();
+	}
+	boolean module1=false,module2=false,module3=false,module4=false;
+	if((module&1)>0)module1=true;
+	if((module&2)>0)module2=true;
+	if((module&4)>0)module3=true;	
+	if((module&8)>0)module4=true;	
+	int permissions=0;
+	if(session.getAttribute("permission")!=null){
+		permissions=((Integer)session.getAttribute("permission")).intValue();
+	}
+	
+	boolean Write1=false,Write2=false,Write3=false,Write4=false;
+	if((permissions&1)>0)Write1=true;
+	if((permissions&2)>0)Write2=true;	
+	if((permissions&4)>0)Write3=true;	
+	if((permissions&8)>0)Write4=true;	
+	if(is_sa){
+		module1=true;module2=true;module3=true;module4=true;
+		Write1=true;Write2=true;Write3=true;Write4=true;
+	}	
+	
+%>
