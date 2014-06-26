@@ -6,13 +6,14 @@
 <jsp:useBean id="logDao" scope="request" class="com.dreamer.dao.LogDao" />
 <jsp:useBean id="Log" scope="request" class="com.dreamer.constant.Constant" />
 <jsp:useBean id="MD5" class="com.dreamer.encode.MD5" />
+<%@page import="com.dreamer.util.IpUtil" %>
 <%
 /*该文件用于extjs页面登录校验跳转*/
 try {
 	String login_name = request.getParameter("username");
 	String password = request.getParameter("password");
 	String rand = request.getParameter("rand");
-	String ip = request.getRemoteAddr();
+	String ip = IpUtil.getIpAddr(request);
 	userBean.setLoginName(login_name);
 	userBean.setPassword(password);
 	String server_rand = (String)session.getAttribute("rand");
