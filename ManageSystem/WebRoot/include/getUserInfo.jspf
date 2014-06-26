@@ -50,10 +50,4 @@
 	if((authority&8)>0)isWrite4=true;
 	if((authority&16)>0)isWrite5=true;
 	if((authority&32)>0)isWrite6=true;
-	System.out.println(user_id);
-	System.out.println(user_name);
-	System.out.println(user_ip);
-	System.out.println(isSuperAdmin);
-	System.out.println(module);
-	System.out.println(authority);
 %>
