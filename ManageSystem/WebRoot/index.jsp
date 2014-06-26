@@ -47,10 +47,11 @@
 								if (success) {
 									//成功退出，回到登录界面
 									Ext.get('background').fadeIn();
-									Content_Panel.removeAll();
-									Content_Panel.doLayout();
+									//Content_Panel.removeAll();
+									//Content_Panel.doLayout();
 									resetLogin();
 									Login_Panel.show();
+									window.location.href='./index.jsp';
 								}
 								Ext.getBody().unmask();
 							}
@@ -103,6 +104,7 @@
 				}
 			
 				Ext.get('background').on('resize',function(){bkResize();});
+			
 				<%if (u_id>0) {//如果已经登录，则移除登录层%>
 					Login_Panel.hide();
 					Top_Panel.show();
@@ -136,14 +138,6 @@
 					Ext.fly('loading-mask').fadeOut({remove:true});
 				};	
 				hideMask.defer(250);
-				//loadPage(Main_Panel,'./case/index.jsp','',function(){
-					//if(typeof(Date_Case)!='undefined'){
-						//Date_Case.expand();
-						//var targetNode = Date_Case.getRootNode().firstChild;
-						//targetNode.select();
-						//targetNode.fireEvent("click",targetNode);
-					//}
-				//});
 			});
 			//定义标题区
 			Top_Panel = new Ext.Panel({
