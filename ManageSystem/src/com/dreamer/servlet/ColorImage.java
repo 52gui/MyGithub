@@ -75,7 +75,7 @@ public class ColorImage extends HttpServlet {
 		HttpSession session = request.getSession(); 
 		
 		session.setAttribute("rand",sRand);
-
+		System.out.println(sRand);
 		g.dispose();
 
 		ImageIO.write(image, "JPEG", response.getOutputStream());

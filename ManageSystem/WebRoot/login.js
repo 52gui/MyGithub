@@ -55,36 +55,36 @@ var Login_Panel = new Ext.FormPanel({
 	defaults: {width: 180,allowBlank: false},
 	defaultType: 'textfield',
 	items: [{
-			fieldLabel: '用户名',
-			name: 'username',
-			blankText : '用户名不能为空'
-		},{
-			fieldLabel: '密&nbsp;&nbsp;&nbsp;码',
-			name: 'password',
-			inputType: 'password',
-			blankText : '密码不能为空'
-		},{
-			fieldLabel: '验证码',
-			id:'randCode',
-			name: 'rand',
-			width: 90,
-			blankText : '验证码不能为空',
-			enableKeyEvents: true,
-			listeners: {
-				keypress: function(t,e) {
-					if (e.getKey()==13) {
-						doLogin();
-					}
+		fieldLabel: '用户名',
+		name: 'username',
+		blankText : '用户名不能为空'
+	},{
+		fieldLabel: '密&nbsp;&nbsp;&nbsp;码',
+		name: 'password',
+		inputType: 'password',
+		blankText : '密码不能为空'
+	},{
+		fieldLabel: '验证码',
+		id:'randCode',
+		name: 'rand',
+		width: 90,
+		blankText : '验证码不能为空',
+		enableKeyEvents: true,
+		listeners: {
+			keypress: function(t,e) {
+				if (e.getKey()==13) {
+					doLogin();
 				}
 			}
-		}],	
+		}
+	}],	
 	buttons:[{
-			text: '登 录',
-			handler: doLogin
-		},{
-			text: '重 填',
-			handler:function(btn){
-				resetLogin();
-			}
-		}]
+		text: '登 录',
+		handler: doLogin
+	},{
+		text: '重 填',
+		handler:function(btn){
+			resetLogin();
+		}
+	}]
 });

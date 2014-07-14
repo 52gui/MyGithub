@@ -4,7 +4,7 @@ CREATE TABLE `ct_log_type` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL DEFAULT '',
   `sn` int(10) NOT NULL DEFAULT '0',
-  `visible` smallint(6) NOT NULL DEFAULT '0',
+  `visible` smallint(6) NOT NULL DEFAULT '1',
   `enabled` smallint(6) NOT NULL DEFAULT '1',
   `deleted` smallint(6) NOT NULL DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -24,7 +24,7 @@ CREATE TABLE `ct_log_operate` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL DEFAULT '',
   `sn` int(10) NOT NULL DEFAULT '0',
-  `visible` smallint(6) NOT NULL DEFAULT '0',
+  `visible` smallint(6) NOT NULL DEFAULT '1',
   `enabled` smallint(6) NOT NULL DEFAULT '1',
   `deleted` smallint(6) NOT NULL DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,6 +41,9 @@ INSERT INTO `ct_log_operate` VALUES ('5', '修改', '0', '0', '1', '0', '2014-06
 INSERT INTO `ct_log_operate` VALUES ('6', '登录', '0', '0', '1', '0', '2014-06-24 23:09:55', '0000-00-00 00:00:00');
 INSERT INTO `ct_log_operate` VALUES ('7', '注销', '0', '0', '1', '0', '2014-06-24 23:09:55', '0000-00-00 00:00:00');
 INSERT INTO `ct_log_operate` VALUES ('8', '导出', '0', '0', '1', '0', '2014-06-24 23:09:56', '0000-00-00 00:00:00');
+INSERT INTO `ct_log_operate` VALUES ('9', '关注', '0', '0', '1', '0', '2014-06-24 23:09:56', '0000-00-00 00:00:00');
+INSERT INTO `ct_log_operate` VALUES ('10', '取消关注', '0', '0', '1', '0', '2014-06-24 23:09:56', '0000-00-00 00:00:00');
+INSERT INTO `ct_log_operate` VALUES ('11', '菜单', '0', '0', '1', '0', '2014-06-24 23:09:56', '0000-00-00 00:00:00');
 
 --操作结果
 DROP TABLE IF EXISTS `ct_log_result`;
@@ -48,7 +51,7 @@ CREATE TABLE `ct_log_result` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL DEFAULT '',
   `sn` int(10) NOT NULL DEFAULT '0',
-  `visible` smallint(6) NOT NULL DEFAULT '0',
+  `visible` smallint(6) NOT NULL DEFAULT '1',
   `enabled` smallint(6) NOT NULL DEFAULT '1',
   `deleted` smallint(6) NOT NULL DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

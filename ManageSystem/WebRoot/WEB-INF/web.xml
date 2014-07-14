@@ -16,6 +16,9 @@
  <login-config>
   <auth-method>BASIC</auth-method>
  </login-config>
+ <session-config>
+  <session-timeout>1</session-timeout>
+ </session-config>
  <resource-ref>
   <description>DB Connection</description>
   <res-ref-name>jdbc/ManageSystem</res-ref-name>

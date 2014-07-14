@@ -28,10 +28,6 @@
 		<script type="text/javascript">document.getElementById('loading-msg').innerHTML = '正在初始化，请稍候...';</script>
 		<script type="text/javascript">
 			Ext.BLANK_IMAGE_URL = './ext/resources/images/default/s.gif';
-			var document_load_time=0;//页面打开时间
-			var last_session_check_time=0;//上次检测session时间
-			var session_fail_tims=0;//session检测失败次数，失败3次之后跳出
-			var theTimer;
 			//安全退出
 			function safeexit() {
 				Ext.MessageBox.confirm('提示', '确实要退出吗? ',function (btn){
@@ -45,12 +41,6 @@
 							scope: this,
 							callback:function(options,success,response){
 								if (success) {
-									//成功退出，回到登录界面
-									Ext.get('background').fadeIn();
-									//Content_Panel.removeAll();
-									//Content_Panel.doLayout();
-									resetLogin();
-									Login_Panel.show();
 									window.location.href='./index.jsp';
 								}
 								Ext.getBody().unmask();

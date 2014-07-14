@@ -14,6 +14,7 @@ try {
 	String password = request.getParameter("password");
 	String rand = request.getParameter("rand");
 	String ip = IpUtil.getIpAddr(request);
+	System.out.println("主机："+ip);
 	userBean.setLoginName(login_name);
 	userBean.setPassword(password);
 	String server_rand = (String)session.getAttribute("rand");
